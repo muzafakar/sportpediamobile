@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1001836179800",
+    "firebase_url": "https://sportpedia-dev.firebaseio.com",
+    "project_id": "sportpedia-dev",
+    "storage_bucket": "sportpedia-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001836179800:android:3757faa0d65b9fc8",
+        "android_client_info": {
+          "package_name": "com.sportpedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001836179800-mgi3kpp1h3dv4r3j4ea512ncord7d4an.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sportpedia",
+            "certificate_hash": "ede12cd8065bf78af893a5c532a41a7059f666f7"
+          }
+        },
+        {
+          "client_id": "1001836179800-brq50fuj039fdav0kut5d5qol2jh7std.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTryJCIe6xX0nvM8j1QzoEuD01zJsgrTM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001836179800-brq50fuj039fdav0kut5d5qol2jh7std.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
