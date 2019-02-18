@@ -7,4 +7,37 @@
         android:id="@+id/mainFragment"
         android:name="com.sportpedia.ui.main.field.MainFragment"
         android:label="MainFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.sportpedia.ui.main.history.HistoryFragment"
+        android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.sportpedia.ui.main.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+
+    <!--TODO add animation-->
+    <action
+        android:id="@+id/toHistory"
+        app:destination="@id/historyFragment"
+        app:enterAnim="@anim/from_left"
+        app:exitAnim="@anim/to_right"
+        app:popEnterAnim="@anim/from_right"
+        app:popExitAnim="@anim/to_left"
+        app:popUpTo="@+id/mainFragment" />
+    <action
+        android:id="@+id/toProfile"
+        app:destination="@id/profileFragment"
+        app:enterAnim="@anim/from_left"
+        app:exitAnim="@anim/to_right"
+        app:popEnterAnim="@anim/from_right"
+        app:popExitAnim="@anim/to_left"
+        app:popUpTo="@+id/mainFragment" />
+    <action
+        android:id="@+id/toMain"
+        app:destination="@id/mainFragment"
+        app:enterAnim="@anim/from_right"
+        app:exitAnim="@anim/to_left"
+        app:popEnterAnim="@anim/from_left"
+        app:popExitAnim="@anim/to_right" />
 </navigation>
