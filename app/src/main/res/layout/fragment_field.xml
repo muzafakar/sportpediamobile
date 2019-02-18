@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,6 +8,20 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvField"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="@color/colorAccent"
+        android:visibility="gone" />
 
-</LinearLayout>
+    <com.mikelau.views.shimmer.ShimmerRecyclerViewX
+        android:id="@+id/rvShimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:shimmer_demo_angle="20"
+        app:shimmer_demo_child_count="5"
+        app:shimmer_demo_layout="@layout/shimmer_layout"
+        app:shimmer_demo_layout_manager_type="linear_vertical"
+        app:shimmer_demo_view_holder_item_background="@android:color/white" />
+
+</RelativeLayout>
