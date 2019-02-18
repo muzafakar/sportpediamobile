@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/splash_navigation"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.sportpedia.ui.splash.fragment.SplashFragment"
+        android:label="SplashFragment">
+        <action
+            android:id="@+id/toRegister"
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.sportpedia.ui.splash.fragment.RegisterFragment"
+        android:label="RegisterFragment" />
+</navigation>

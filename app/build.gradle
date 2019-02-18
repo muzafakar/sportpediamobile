@@ -6,7 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -53,6 +52,8 @@ dependencies {
     def nav_version = "1.0.0-beta02"
     implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui-ktx:$nav_version" // use -ktx for Kotlin
+
+    // Other
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
