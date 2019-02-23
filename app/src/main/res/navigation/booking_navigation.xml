@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/booking_navigation.xml"
+    app:startDestination="@id/venueFragment">
+
+    <fragment
+        android:id="@+id/venueFragment"
+        android:name="com.sportpedia.ui.booking.fragment.VenueFragment"
+        android:label="VenueFragment" >
+        <action
+            android:id="@+id/toField"
+            app:destination="@id/fieldFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fieldFragment"
+        android:name="com.sportpedia.ui.booking.fragment.FieldFragment"
+        android:label="FieldFragment" />
+</navigation>

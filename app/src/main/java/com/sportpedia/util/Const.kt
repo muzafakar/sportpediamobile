@@ -11,4 +11,6 @@ object Const {
     const val user = "user"
     const val address = "address"
     const val phone = "phone"
+
+    const val venue = "venue"
 }

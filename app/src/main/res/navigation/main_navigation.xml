@@ -5,23 +5,15 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.sportpedia.ui.main.field.MainFragment"
-        android:label="MainFragment" >
-        <action
-            android:id="@+id/toField"
-            app:destination="@id/fieldFragment"
-            app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/to_left"
-            app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right" />
-    </fragment>
+        android:name="com.sportpedia.ui.main.fragment.MainFragment"
+        android:label="MainFragment" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.sportpedia.ui.main.history.HistoryFragment"
+        android:name="com.sportpedia.ui.main.fragment.HistoryFragment"
         android:label="HistoryFragment" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.sportpedia.ui.main.profile.ProfileFragment"
+        android:name="com.sportpedia.ui.main.fragment.ProfileFragment"
         android:label="ProfileFragment" />
 
     <!--TODO add animation-->
@@ -48,8 +40,4 @@
         app:exitAnim="@anim/to_left"
         app:popEnterAnim="@anim/from_left"
         app:popExitAnim="@anim/to_right" />
-    <fragment
-        android:id="@+id/fieldFragment"
-        android:name="com.sportpedia.ui.main.field.FieldFragment"
-        android:label="FieldFragment" />
 </navigation>

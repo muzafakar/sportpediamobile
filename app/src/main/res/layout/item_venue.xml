@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgVenue"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/football" />
+
+        <TextView
+            android:id="@+id/tvVenueName"
+            style="@style/TextBoldBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/imgVenue"
+            app:layout_constraintTop_toTopOf="@id/imgVenue"
+            tools:text="Amikom Futsal" />
+
+        <TextView
+            android:id="@+id/tvVenueAddress"
+            style="@style/TextBoldLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvVenueName"
+            app:layout_constraintTop_toBottomOf="@id/tvVenueName"
+            tools:text="Sleman, Condongcatur" />
+
+        <TextView
+            android:id="@+id/tvFieldCount"
+            style="@style/TextBoldLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvVenueAddress"
+            app:layout_constraintTop_toBottomOf="@id/tvVenueAddress"
+            tools:text="11 Lapangan" />
+
+        <TextView
+            android:id="@+id/tvPriceHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/lato_light"
+            android:text="@string/mulai_dari"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/tvStartingPrice"
+            app:layout_constraintEnd_toEndOf="@id/tvStartingPrice" />
+
+        <TextView
+            android:id="@+id/tvStartingPrice"
+            style="@style/TextPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/imgVenue"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Rp 100.000" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

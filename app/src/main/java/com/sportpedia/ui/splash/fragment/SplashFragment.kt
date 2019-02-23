@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
+import com.github.florent37.kotlin.pleaseanimate.please
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -48,7 +49,7 @@ class SplashFragment : Fragment(), AnkoLogger {
                     requestGoogleAccount()
                 }
             }
-        }, 1500)
+        }, 3000)
     }
 
     private fun animateButton() {
