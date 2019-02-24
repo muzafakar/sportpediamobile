@@ -12,6 +12,7 @@ data class Venue(
     val ownerId: String = "",
     val imgUrl: String? = null,
     val address: String = "",
+    val category: String = "",
     @ServerTimestamp
     val creationTime: Date? = null,
     val startingPrice: Int = 0,

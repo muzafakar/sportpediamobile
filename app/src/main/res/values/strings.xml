@@ -2,8 +2,15 @@
     <string name="app_name" translatable="false">Sportpedia Mobile</string>
     <string name="web_client_id" translatable="false">1001836179800-brq50fuj039fdav0kut5d5qol2jh7std.apps.googleusercontent.com</string>
     <string name="sign_in_message">please wait</string>
-    <string name="mau_main_di_tanggal">Mau main di tanggal...</string>
+    <string name="mau_main_di_tanggal">Mau main di tanggal…</string>
     <string name="search_text">Ayo Cari Tempat</string>
     <string name="ayo_futsal">Ayo Futsal</string>
     <string name="mulai_dari">Mulai dari</string>
+
+    <string-array name="category">
+        <item>Futsal</item>
+        <item>Football</item>
+        <item>Basketball</item>
+        <item>Badminton</item>
+    </string-array>
 </resources>

@@ -13,4 +13,5 @@ object Const {
     const val phone = "phone"
 
     const val venue = "venue"
+    const val category = "category"
 }

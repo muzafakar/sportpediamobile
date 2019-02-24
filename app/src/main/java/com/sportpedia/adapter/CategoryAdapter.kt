@@ -26,7 +26,7 @@ class CategoryAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItem(category: Category, listener: (Category) -> Unit) {
-            itemView.imgCategory.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_badminton))
+            itemView.imgCategory.setImageDrawable(ContextCompat.getDrawable(context, category.icon!!))
             itemView.setOnClickListener { listener(category) }
         }
     }

@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.sportpedia.R
 import com.sportpedia.adapter.CategoryAdapter
 import com.sportpedia.model.Category
+import com.sportpedia.ui.booking.BookingActivity
+import com.sportpedia.util.Const
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.startActivity
 
 class MainFragment : Fragment(), AnkoLogger {
     private val categoryList = mutableListOf<Category>()
@@ -19,21 +22,23 @@ class MainFragment : Fragment(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         categoryAdapter = CategoryAdapter(context!!, categoryList) {
-
+            context!!.startActivity<BookingActivity>(Const.category to it.category)
         }
 
     }
 
     private fun setupDummyCategory() {
-        val cFutsal = Category(category = "futsal", icon = R.drawable.ic_futsal)
-        val cBasketball = Category(category = "basketball", icon = R.drawable.ic_basketball)
-        val cBadmintion = Category(category = "badmintion", icon = R.drawable.ic_badminton)
-        val cFootball = Category(category = "football", icon = R.drawable.ic_football)
+        val cFutsal = Category(category = "futsal", icon = R.drawable.futsal)
+        val cBasketball = Category(category = "basketball", icon = R.drawable.basketball)
+        val cBadmintion = Category(category = "badminton", icon = R.drawable.badminton)
+        val cFootball = Category(category = "football", icon = R.drawable.football)
 
         categoryList.apply {
             add(cFutsal)
             add(cBasketball)
             add(cBadmintion)
+            add(cFootball)
+            add(cFootball)
             add(cFootball)
         }
 

@@ -3,12 +3,14 @@ package com.sportpedia.util
 import android.content.Context
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import com.takisoft.datetimepicker.DatePickerDialog
 import com.takisoft.datetimepicker.TimePickerDialog
 import java.text.SimpleDateFormat
 import java.util.*
 
-object Dialogs {
+object TimeUtil {
+    private const val datePattern = "dd-MM-yyyy"
 
     fun setDate(context: Context, view: View) {
         val calendar = Calendar.getInstance()
@@ -21,8 +23,8 @@ object Dialogs {
                 val cl = Calendar.getInstance()
                 cl.set(year, month, day)
                 val date = cl.time
-                val sdf = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.getDefault())
-                (view as EditText).setText(sdf.format(date))
+                val sdf = SimpleDateFormat(datePattern, Locale.getDefault())
+                (view as TextView).text = sdf.format(date)
             },
             currentYear, currentMonth, currentDay
         )
@@ -30,7 +32,7 @@ object Dialogs {
     }
 
     fun toBookedId(dateString: String): String {
-        val sdfIn = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.getDefault())
+        val sdfIn = SimpleDateFormat(datePattern, Locale.getDefault())
         val cl = Calendar.getInstance().apply {
             time = sdfIn.parse(dateString)
         }
@@ -60,5 +62,10 @@ object Dialogs {
             }, h, m, true
         )
         timePickerDialog.show()
+    }
+
+    fun today():String{
+        val sdf = SimpleDateFormat(datePattern, Locale.getDefault())
+        return sdf.format(Date())
     }
 }
