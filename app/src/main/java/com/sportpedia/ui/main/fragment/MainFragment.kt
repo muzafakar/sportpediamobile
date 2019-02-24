@@ -5,49 +5,50 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import com.sportpedia.R
-import com.sportpedia.ui.booking.BookingActivity
-import com.sportpedia.ui.booking.viewmodel.VenueViewModel
-import com.sportpedia.util.Dialogs
+import com.sportpedia.adapter.CategoryAdapter
+import com.sportpedia.model.Category
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.startActivity
 
 class MainFragment : Fragment(), AnkoLogger {
-//    private lateinit var viewModel: VenueViewModel
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_main, container, false)
+    private val categoryList = mutableListOf<Category>()
+    private lateinit var categoryAdapter: CategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       /* activity?.let {
-            viewModel = ViewModelProviders.of(it).get(VenueViewModel::class.java)
-        }*/
+        categoryAdapter = CategoryAdapter(context!!, categoryList) {
+
+        }
+
     }
+
+    private fun setupDummyCategory() {
+        val cFutsal = Category(category = "futsal", icon = R.drawable.ic_futsal)
+        val cBasketball = Category(category = "basketball", icon = R.drawable.ic_basketball)
+        val cBadmintion = Category(category = "badmintion", icon = R.drawable.ic_badminton)
+        val cFootball = Category(category = "football", icon = R.drawable.ic_football)
+
+        categoryList.apply {
+            add(cFutsal)
+            add(cBasketball)
+            add(cBadmintion)
+            add(cFootball)
+        }
+
+        categoryAdapter.notifyDataSetChanged()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        inflater.inflate(R.layout.fragment_main, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        etDate.clearFocus()
-        setupViews()
+        rvCategory.layoutManager = GridLayoutManager(context!!, 3)
+        rvCategory.adapter = categoryAdapter
+        setupDummyCategory()
     }
 
-    private fun setupViews() {
-        etDate.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) {
-                Dialogs.setDate(context!!, v)
-            }
-        }
 
-        btnSearch.setOnClickListener {
-            val dateString = etDate.text.toString()
-            if (dateString.isNotEmpty()) {
-
-                val bookedId = Dialogs.toBookedId(etDate.text.toString())
-                info { "bookedId: $bookedId" }
-                context!!.startActivity<BookingActivity>("bookedId" to bookedId)
-            }
-        }
-    }
 }

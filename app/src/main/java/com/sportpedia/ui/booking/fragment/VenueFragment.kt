@@ -14,7 +14,7 @@ import com.sportpedia.adapter.VenueAdapter
 import com.sportpedia.model.Venue
 import com.sportpedia.ui.booking.viewmodel.VenueViewModel
 import com.sportpedia.util.Const
-import kotlinx.android.synthetic.main.fragment_recyclerview.*
+import kotlinx.android.synthetic.main.fragment_venue.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
@@ -37,7 +37,7 @@ class VenueFragment : Fragment(), AnkoLogger {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fragment_recyclerview, container, false)
+            inflater.inflate(R.layout.fragment_venue, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
