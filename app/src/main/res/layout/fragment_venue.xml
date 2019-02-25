@@ -1,55 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/venueToolbar"
+
+    <include
+        layout="@layout/date_selector"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginBottom="4dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spCategory"
-            style="@style/TextBoldBlack"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:entries="@array/category"
-            android:textAlignment="center" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDate"
-            style="@style/TextBoldBlack"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            tools:text="23-11-2019" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvContent"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/venueToolbar"
-        android:layout_centerInParent="true"
-        android:visibility="visible" />
+        android:orientation="vertical">
 
-    <com.mikelau.views.shimmer.ShimmerRecyclerViewX
-        android:id="@+id/rvShimmer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        app:shimmer_demo_angle="23"
-        app:shimmer_demo_child_count="3"
-        app:shimmer_demo_layout="@layout/shimmer_layout"
-        app:shimmer_demo_layout_manager_type="linear_vertical"
-        app:shimmer_demo_view_holder_item_background="@android:color/white" />
 
-</RelativeLayout>
+        <include
+            android:id="@+id/tb"
+            layout="@layout/toollbar_spinner_date" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tb"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+
+        <com.mikelau.views.shimmer.ShimmerRecyclerViewX
+            android:id="@+id/rvShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tb"
+            android:layout_centerInParent="true"
+            app:shimmer_demo_angle="23"
+            app:shimmer_demo_child_count="5"
+            app:shimmer_demo_layout="@layout/shimmer_layout"
+            app:shimmer_demo_layout_manager_type="linear_vertical"
+            app:shimmer_demo_view_holder_item_background="@android:color/white" />
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

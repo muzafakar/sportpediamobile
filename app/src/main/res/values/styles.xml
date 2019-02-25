@@ -10,12 +10,25 @@
 
     <style name="TextBoldBlack" parent="Theme.AppCompat">
         <item name="android:textColor">@android:color/black</item>
-        <!--<item name="android:textStyle">bold</item>-->
         <item name="android:textSize">22sp</item>
         <item name="android:fontFamily">@font/lato_bold</item>
     </style>
-    <style name="TextBoldLight" parent="Theme.AppCompat">
+
+    <style name="TextBoldWhite" parent="Theme.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="TextLightBlack" parent="Theme.AppCompat">
         <item name="android:textColor">@android:color/black</item>
+        <!--<item name="android:textStyle">bold</item>-->
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/lato_light</item>
+    </style>
+
+    <style name="TextLightWhite" parent="Theme.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
         <!--<item name="android:textStyle">bold</item>-->
         <item name="android:textSize">22sp</item>
         <item name="android:fontFamily">@font/lato_light</item>

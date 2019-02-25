@@ -1,13 +1,16 @@
 package com.sportpedia.ui.booking.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.sportpedia.R
@@ -16,9 +19,11 @@ import com.sportpedia.model.Venue
 import com.sportpedia.ui.booking.viewmodel.VenueViewModel
 import com.sportpedia.util.Const
 import com.sportpedia.util.TimeUtil
+import kotlinx.android.synthetic.main.date_selector.*
 import kotlinx.android.synthetic.main.fragment_venue.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import java.util.*
 
 class VenueFragment : Fragment(), AnkoLogger {
     private lateinit var viewModel: VenueViewModel
@@ -27,13 +32,14 @@ class VenueFragment : Fragment(), AnkoLogger {
     private lateinit var venueAdp: VenueAdapter
     private val venues = mutableListOf<Venue>()
 
-    private val spListener = object : AdapterView.OnItemSelectedListener {
-        override fun onNothingSelected(parent: AdapterView<*>?) {}
+    /*  private val spListener = object : AdapterView.OnItemSelectedListener {
+          override fun onNothingSelected(parent: AdapterView<*>?) {}
 
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            viewModel.category.value = spCategory.selectedItem as String
-        }
-    }
+          override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+              (parent?.getChildAt(0) as TextView).setTextColor(Color.WHITE)
+              viewModel.category.value = (spCategory.selectedItem as String).toLowerCase(Locale.getDefault())
+          }
+      }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +49,7 @@ class VenueFragment : Fragment(), AnkoLogger {
 
         venueAdp = VenueAdapter(context!!, venues) {
             info { "bookedId: ${TimeUtil.toBookedId(tvDate.text.toString())}" }
+            findNavController().navigate(R.id.toField)
         }
     }
 
@@ -51,10 +58,9 @@ class VenueFragment : Fragment(), AnkoLogger {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvShimmer.showShimmerAdapter()
         rvContent.layoutManager = LinearLayoutManager(context!!)
         rvContent.adapter = venueAdp
-        spCategory.onItemSelectedListener = spListener
+//        spCategory.onItemSelectedListener = spListener
         tvDate.text = TimeUtil.today()
         tvDate.setOnClickListener {
             TimeUtil.setDate(context!!, it)
@@ -67,8 +73,9 @@ class VenueFragment : Fragment(), AnkoLogger {
     }
 
     private fun getVenueByCategory(category: String) {
+        rvShimmer.showShimmerAdapter()
         firestore.collection(Const.venue)
-            .whereEqualTo(Const.category, category.toLowerCase())
+            .whereEqualTo(Const.category, category)
             .get()
             .addOnCompleteListener {
                 if (it.isSuccessful) {

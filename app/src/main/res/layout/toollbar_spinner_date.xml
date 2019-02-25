@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbBooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<androidx.appcompat.widget.LinearLayoutCompat-->
+        <!--android:id="@+id/venueCustomToolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<androidx.appcompat.widget.AppCompatSpinner-->
+            <!--android:id="@+id/spCategory"-->
+            <!--style="@style/TextBoldBlack"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:entries="@array/category"-->
+            <!--android:textAlignment="center" />-->
+
+        <!--<androidx.appcompat.widget.AppCompatTextView-->
+            <!--android:id="@+id/tvDate"-->
+            <!--style="@style/TextBoldWhite"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="18sp"-->
+            <!--tools:text="23-11-2019" />-->
+    <!--</androidx.appcompat.widget.LinearLayoutCompat>-->
+
+</com.google.android.material.appbar.AppBarLayout>

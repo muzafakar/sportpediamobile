@@ -11,9 +11,13 @@ import com.sportpedia.model.Venue
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_venue.view.*
 
-class VenueAdapter(private val context: Context, private val venues: List<Venue>, private val listener: (Venue) -> Unit) : RecyclerView.Adapter<VenueAdapter.ViewHolder>() {
+class VenueAdapter(
+    private val context: Context,
+    private val venues: List<Venue>,
+    private val listener: (Venue) -> Unit
+) : RecyclerView.Adapter<VenueAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-            ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_venue, parent, false))
+        ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_venue, parent, false))
 
     override fun getItemCount(): Int = venues.size
 
@@ -36,6 +40,7 @@ class VenueAdapter(private val context: Context, private val venues: List<Venue>
                 itemView.tvFieldCount.text = "${it.size} lapangan"
             }
 
+            itemView.setOnClickListener { listener(venue) }
         }
     }
 
