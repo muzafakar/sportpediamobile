@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -49,6 +51,7 @@ class VenueFragment : Fragment(), AnkoLogger {
 
         venueAdp = VenueAdapter(context!!, venues) {
             info { "bookedId: ${TimeUtil.toBookedId(tvDate.text.toString())}" }
+            viewModel.venue.value = it
             findNavController().navigate(R.id.toField)
         }
     }

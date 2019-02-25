@@ -6,6 +6,8 @@
     <string name="search_text">Ayo Cari Tempat</string>
     <string name="ayo_futsal">Ayo Futsal</string>
     <string name="mulai_dari">Mulai dari</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAWAMptzfdZbYKsRCO7ZcR2TY_dVvZdiSU</string>
+
 
     <string-array name="category">
         <item>Futsal</item>

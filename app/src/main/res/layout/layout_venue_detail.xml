@@ -1,17 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:padding="8dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgVenue"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+    <TextView
+        android:id="@+id/nameHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Nama"
+        android:textAppearance="@style/TextBoldBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.gms.maps.MapView
+    <TextView
+        android:id="@+id/addressHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Alamat"
+        android:textAppearance="@style/TextBoldBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameHeader" />
+
+    <TextView
+        android:id="@+id/openHourHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Jam Buka"
+        android:textAppearance="@style/TextBoldBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressHeader" />
+
+    <TextView
+        android:id="@+id/facilitiesHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Fasilitas"
+        android:textAppearance="@style/TextBoldBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/openHourHeader" />
+
+    <TextView
+        android:id="@+id/fieldCountHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Lapangan"
+        android:textAppearance="@style/TextBoldBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFacilities" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="fieldCountHeader,facilitiesHeader,openHourHeader,addressHeader,nameHeader" />
+
+    <TextView
+        android:id="@+id/tvVenueName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextLightBlack"
+        app:layout_constraintStart_toEndOf="@id/barier"
+        app:layout_constraintTop_toTopOf="@id/nameHeader"
+        tools:text="Amikom Futsal" />
+
+    <TextView
+        android:id="@+id/tvVenueAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextLightBlack"
+        app:layout_constraintStart_toEndOf="@id/barier"
+        app:layout_constraintTop_toTopOf="@id/addressHeader"
+        tools:text="Amikom Futsal" />
+
+    <TextView
+        android:id="@+id/tvOpenHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextLightBlack"
+        app:layout_constraintStart_toEndOf="@id/barier"
+        app:layout_constraintTop_toTopOf="@id/openHourHeader"
+        tools:text="Amikom Futsal" />
+
+    <TextView
+        android:id="@+id/tvFacilities"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextLightBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barier"
+        app:layout_constraintTop_toTopOf="@id/facilitiesHeader"
+        tools:text="Amikom Futsal" />
+
+    <TextView
+        android:id="@+id/tvFieldCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextLightBlack"
+        app:layout_constraintStart_toEndOf="@id/barier"
+        app:layout_constraintTop_toTopOf="@id/fieldCountHeader"
+        tools:text="Amikom Futsal" />
+
+    <fragment
         android:id="@+id/mapVenue"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fieldCountHeader" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
