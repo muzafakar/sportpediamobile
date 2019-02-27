@@ -10,9 +10,10 @@ data class Field(
     val ownerId: String = "",
     val venueId: String = "",
     val name: String = "",
-    val imgUrl: String = "",
+    val imgUrl: List<String>? = null,
     val facilities: List<String>? = null,
     @ServerTimestamp
     val creationTime: Date? = null,
-    val price: Int = 0
+    val priceA: Int = 0,
+    val priceB: Int = 0
 )

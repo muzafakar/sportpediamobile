@@ -1,6 +1,5 @@
 package com.sportpedia.ui.booking.fragment
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.transition.TransitionManager
+import com.github.florent37.kotlin.pleaseanimate.please
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -32,8 +32,6 @@ class FieldFragment : Fragment() {
         activity?.let {
             viewModel = ViewModelProviders.of(it).get(VenueViewModel::class.java)
         }
-
-        val test = HashMap<String, Int>()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -41,8 +39,8 @@ class FieldFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvVenueCardDetail.setOnClickListener { collapseExpandVenueDetail() }
-        tvFieldCardList.setOnClickListener { collapseExpandFieldDetail() }
+        icVenueArrow.setOnClickListener { collapseExpandVenueDetail() }
+        icFieldArrow.setOnClickListener { collapseExpandFieldDetail() }
         val mapFragment = childFragmentManager.findFragmentById(R.id.mapVenue) as SupportMapFragment
 
         observerVenue(mapFragment)
@@ -86,27 +84,22 @@ class FieldFragment : Fragment() {
         TransitionManager.beginDelayedTransition(venueField)
         if (layoutVenueDetail.visibility == View.GONE) {
             layoutVenueDetail.visibility = View.VISIBLE
-            tvVenueCardDetail.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_up, 0)
+            please(duration = 100L) { animate(icVenueArrow) { toBeRotated(180f) } }.start()
         } else {
             layoutVenueDetail.visibility = View.GONE
-            tvVenueCardDetail.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_down, 0)
+            please(duration = 100L) { animate(icVenueArrow) { toBeRotated(0f) } }.start()
         }
-
     }
 
     private fun collapseExpandFieldDetail() {
-        /*TransitionManager.beginDelayedTransition(venueField)
-        if (layoutFieldContent.visibility == View.GONE) {
-            layoutFieldContent.visibility = View.VISIBLE
-            tvFieldCardList.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_up, 0)
+        TransitionManager.beginDelayedTransition(venueField)
+        if (rvField.visibility == View.GONE) {
+            rvField.visibility = View.VISIBLE
+            please(duration = 100L) { animate(icFieldArrow) { toBeRotated(180f) } }.start()
         } else {
-            layoutFieldContent.visibility = View.GONE
-            tvFieldCardList.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_down, 0)
+            rvField.visibility = View.GONE
+            please(duration = 100L) { animate(icFieldArrow) { toBeRotated(0f) } }.start()
         }
-
-        val animation = ObjectAnimator.ofInt(layoutFieldContent, "height", layoutFieldContent.height)
-        animation.duration = 200
-        animation.start()*/
     }
 
     private fun getBookedData(bookedId: String) {

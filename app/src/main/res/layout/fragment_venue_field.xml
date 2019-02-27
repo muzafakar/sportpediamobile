@@ -17,6 +17,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:layout_height="250dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -24,6 +25,10 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            app:collapsedTitleTextAppearance="@style/ToolbarTitle"
+            app:collapsedTitleGravity="center"
+            app:expandedTitleGravity="start|bottom"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
@@ -74,7 +79,7 @@
                 app:cardElevation="4dp"
                 app:contentPadding="8dp">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -82,19 +87,32 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvVenueCardDetail"
                         style="@style/TextBoldBlack"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
                         android:text="Detail Venue"
                         android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/icVenueArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_arrow_down" />
 
                     <include
                         android:id="@+id/layoutVenueDetail"
                         layout="@layout/layout_venue_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvVenueCardDetail"
+                        android:layout_marginTop="8dp"
                         android:visibility="gone" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -105,11 +123,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="4dp"
                 app:contentPadding="8dp">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -118,13 +137,32 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvFieldCardList"
                         style="@style/TextBoldBlack"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
                         android:text="Pilih Lapangan"
                         android:textSize="18sp" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                    <ImageView
+                        android:id="@+id/icFieldArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_arrow_down" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvFieldCardList"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
