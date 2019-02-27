@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_below="@id/tb"
             android:layout_centerInParent="true"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.mikelau.views.shimmer.ShimmerRecyclerViewX
             android:id="@+id/rvShimmer"

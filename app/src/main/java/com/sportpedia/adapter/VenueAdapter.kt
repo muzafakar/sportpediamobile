@@ -13,9 +13,9 @@ import kotlinx.android.synthetic.main.item_venue.view.*
 
 class VenueAdapter(
     private val context: Context,
-    private val venues: List<Venue>,
     private val listener: (Venue) -> Unit
 ) : RecyclerView.Adapter<VenueAdapter.ViewHolder>() {
+    var venues = mutableListOf<Venue>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_venue, parent, false))
 

@@ -19,6 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@id/vpFieldImage"
         app:layout_constraintEnd_toEndOf="@id/vpFieldImage"
         app:layout_constraintStart_toStartOf="@id/vpFieldImage" />
@@ -108,8 +109,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:textAllCaps="false"
+        app:backgroundTint="@color/secondaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBooked"
+        app:rippleColor="@color/secondaryLightColor"
         tools:text="100rb" />
 
     <View
