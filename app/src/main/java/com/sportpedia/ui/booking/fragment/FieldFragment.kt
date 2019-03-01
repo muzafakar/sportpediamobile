@@ -46,7 +46,7 @@ class FieldFragment : Fragment(), AnkoLogger {
         fieldAdapter.fields.addAll(it)
         fieldAdapter.notifyDataSetChanged()
     }
-    private val bookedScheduleObserver = Observer<Booked>{
+    private val bookedScheduleObserver = Observer<Booked> {
         fieldAdapter.booked = it
         fieldAdapter.notifyDataSetChanged()
     }
@@ -77,17 +77,16 @@ class FieldFragment : Fragment(), AnkoLogger {
         rvField.adapter = fieldAdapter
 
         venueViewModel.selectedVenue.observe(this, selectedVenueObserver)
+        venueViewModel.bookedSchedule.observe(this, bookedScheduleObserver)
         fieldViewModel.fields.observe(this, fieldObserver)
-
-        venueViewModel.bookedId.value
     }
 
     @SuppressLint("SetTextI18n")
     private fun populateDetail(venue: Venue) {
         //Toolbar
+        tbVenue.title = venue.name
         venue.imgUrl?.let { url ->
             Picasso.get().load(url).fit().centerCrop().into(imgVenue)
-            tbVenue.title = venue.name
         }
 
         //CardDetail
@@ -129,5 +128,10 @@ class FieldFragment : Fragment(), AnkoLogger {
             rvField.visibility = View.GONE
             please(duration = 100L) { animate(icFieldArrow) { toBeRotated(0f) } }.start()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        venueViewModel.removeScheduleListener()
     }
 }

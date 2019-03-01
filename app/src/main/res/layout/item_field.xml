@@ -18,8 +18,8 @@
         android:id="@+id/dotContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@id/vpFieldImage"
         app:layout_constraintEnd_toEndOf="@id/vpFieldImage"
         app:layout_constraintStart_toStartOf="@id/vpFieldImage" />
@@ -102,23 +102,34 @@
         app:layout_constraintTop_toBottomOf="@id/tvAvailableHeader"
         tools:text="18    19    20    22" />
 
+    <TextView
+        android:id="@+id/tvCost"
+        style="@style/TextLightBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/btnBooking"
+        app:layout_constraintEnd_toEndOf="@id/btnBooking"
+        tools:text="Rp. 80000" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBooking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:text="Booking"
         android:textAllCaps="false"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBooked"
-        app:rippleColor="@color/secondaryLightColor"
-        tools:text="100rb" />
+        app:rippleColor="@color/secondaryLightColor" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/dark_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

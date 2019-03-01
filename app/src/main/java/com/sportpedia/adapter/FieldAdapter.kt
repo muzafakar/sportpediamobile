@@ -14,11 +14,13 @@ import com.sportpedia.R
 import com.sportpedia.model.Booked
 import com.sportpedia.model.Field
 import kotlinx.android.synthetic.main.item_field.view.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 
 class FieldAdapter(
     private val context: Context,
     private val listener: (Field) -> Unit
-) : RecyclerView.Adapter<FieldAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<FieldAdapter.ViewHolder>(), AnkoLogger {
     var booked: Booked? = Booked()
     val fields = mutableListOf<Field>()
 
@@ -43,43 +45,59 @@ class FieldAdapter(
             field.facilities?.let { itemView.tvFacilities.text = it.toString() }
 
             // TODO cek apakah yang dipilih jam malam
-            itemView.btnBooking.text = "Rp. ${field.priceA}"
+            itemView.tvCost.text = "Rp. ${field.priceA}"
+
+            itemView.btnBooking.setOnClickListener { listener(field) }
 
 
             field.imgUrl?.let { bindImage(it) }
         }
 
         fun bindBooked(field: Field, booked: Booked) {
-            when (field.category) {
+            info { "booked: ${booked.futsal?.size}" }
+            info { "fieldId: ${field.id}" }
+            booked.futsal?.keys?.forEach {
+                info { "keys: $it" }
+            }
+
+            val schList = booked.futsal?.getValue(field.id)
+            schList?.forEach {
+                info { "value: $it" }
+            }
+            itemView.tvBooked.text = (schList ?: "no value").toString()
+
+
+            /*when (field.category) {
                 "futsal" -> {
                     booked.futsal?.let { hashMap ->
-                        hashMap[field.id]?.let {
-                            itemView.tvBooked.text = it.toString()
-                        }
-                    }
-                }
-                "basketball" -> {
-                    booked.basketball?.let { hashMap ->
-                        hashMap[field.id]?.let {
-                            itemView.tvBooked.text = it.toString()
+                        hashMap[field.id]?.let { list ->
+                            schList.apply { clear(); addAll(list) }
                         }
                     }
                 }
                 "badminton" -> {
                     booked.badminton?.let { hashMap ->
-                        hashMap[field.id]?.let {
-                            itemView.tvBooked.text = it.toString()
+                        hashMap[field.id]?.let { list ->
+                            schList.apply { clear(); addAll(list) }
+                        }
+                    }
+                }
+                "basketball" -> {
+                    booked.basketball?.let { hashMap ->
+                        hashMap[field.id]?.let { list ->
+                            schList.apply { clear(); addAll(list) }
                         }
                     }
                 }
                 "soccer" -> {
                     booked.soccer?.let { hashMap ->
-                        hashMap[field.id]?.let {
-                            itemView.tvBooked.text = it.toString()
+                        hashMap[field.id]?.let { list ->
+                            schList.apply { clear(); addAll(list) }
                         }
                     }
                 }
-            }
+            }*/
+
         }
 
         private fun bindImage(imageUrl: List<String>) {

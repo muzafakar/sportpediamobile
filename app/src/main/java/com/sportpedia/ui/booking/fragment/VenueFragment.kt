@@ -44,10 +44,14 @@ class VenueFragment : Fragment(), AnkoLogger {
             fieldViewModel = ViewModelProviders.of(it).get(FieldViewModel::class.java)
         }
 
-        venueAdp = VenueAdapter(context!!) {
-            info { "bookedId: ${TimeUtil.toBookedId(tvDate.text.toString())}" }
-            venueViewModel.selectedVenue.value = it
-            fieldViewModel.getField(it.id)
+        venueAdp = VenueAdapter(context!!) { venue ->
+            venueViewModel.selectedVenue.value = venue
+            fieldViewModel.getField(venue.id)
+
+            val bookedId = TimeUtil.toBookedId(tvDate.text.toString())
+            venueViewModel.getBookedSchedule(bookedId)
+            info { "bookedSchedule: $bookedId" }
+
             findNavController().navigate(R.id.toField)
         }
 
