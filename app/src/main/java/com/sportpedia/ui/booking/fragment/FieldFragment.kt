@@ -21,6 +21,7 @@ import com.sportpedia.adapter.FieldAdapter
 import com.sportpedia.model.Booked
 import com.sportpedia.model.Field
 import com.sportpedia.model.Venue
+import com.sportpedia.util.VenueUtil
 import com.sportpedia.viewmodel.FieldViewModel
 import com.sportpedia.viewmodel.VenueViewModel
 import com.squareup.picasso.Picasso
@@ -40,6 +41,10 @@ class FieldFragment : Fragment(), AnkoLogger {
     private val selectedVenueObserver = Observer<Venue> {
         populateDetail(it)
         populateMap(it)
+        it.openHour?.let { openHour ->
+            fieldAdapter.hourRange.clear()
+            fieldAdapter.hourRange.addAll(openHour)
+        }
     }
     private val fieldObserver = Observer<List<Field>> {
         fieldAdapter.fields.clear()
@@ -81,7 +86,6 @@ class FieldFragment : Fragment(), AnkoLogger {
         fieldViewModel.fields.observe(this, fieldObserver)
     }
 
-    @SuppressLint("SetTextI18n")
     private fun populateDetail(venue: Venue) {
         //Toolbar
         tbVenue.title = venue.name
@@ -92,8 +96,13 @@ class FieldFragment : Fragment(), AnkoLogger {
         //CardDetail
         tvVenueName.text = venue.name
         tvVenueAddress.text = venue.address
-        tvOpenHour.text = "08:00 - 22:00 (statis)"
-        tvFacilities.text = "Parkir gratis, Wifi, Musholla (statis)"
+        venue.openHour?.let {
+            tvOpenHour.text = VenueUtil.parseOpenHour(it)
+        }
+
+        venue.facilities?.let {
+            tvFacilities.text = it.joinToString()
+        }
         venue.fieldCount?.let { tvFieldCount.text = "${it.size}" }
     }
 

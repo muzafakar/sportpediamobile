@@ -65,6 +65,7 @@ class VenueFragment : Fragment(), AnkoLogger {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rvContent.layoutManager = LinearLayoutManager(context!!)
+
         rvContent.adapter = venueAdp
 
         tvDate.text = TimeUtil.today()

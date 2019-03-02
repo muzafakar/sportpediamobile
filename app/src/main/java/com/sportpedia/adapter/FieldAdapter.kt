@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager
 import com.sportpedia.R
 import com.sportpedia.model.Booked
 import com.sportpedia.model.Field
+import com.sportpedia.util.VenueUtil
 import kotlinx.android.synthetic.main.item_field.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -23,6 +24,7 @@ class FieldAdapter(
 ) : RecyclerView.Adapter<FieldAdapter.ViewHolder>(), AnkoLogger {
     var booked: Booked? = Booked()
     val fields = mutableListOf<Field>()
+    val hourRange = mutableListOf<Int>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_field, parent, false))
@@ -31,9 +33,7 @@ class FieldAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(fields[position], listener)
-        booked?.let {
-            holder.bindBooked(fields[position], it)
-        }
+        holder.bindBooked(fields[position], booked, hourRange)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -53,51 +53,29 @@ class FieldAdapter(
             field.imgUrl?.let { bindImage(it) }
         }
 
-        fun bindBooked(field: Field, booked: Booked) {
-            info { "booked: ${booked.futsal?.size}" }
-            info { "fieldId: ${field.id}" }
-            booked.futsal?.keys?.forEach {
-                info { "keys: $it" }
+        fun bindBooked(field: Field, booked: Booked?, openHour: List<Int>) {
+            val availableHour = mutableListOf<Int>().apply {
+                addAll(VenueUtil.generateOpenHour(openHour))
+            }
+            info { "hourString: ${availableHour.joinToString()}" }
+
+            booked?.let { b ->
+                when (field.category) {
+                    "futsal" -> {
+                        b.futsal?.let { map ->
+                            val bookedHour = map.getValue(field.id)
+                            info { "bookedHour: ${bookedHour.joinToString()}" }
+                            bookedHour.forEach { hour ->
+                                availableHour.remove(hour)
+                            }
+                        }
+                    }
+                    else -> {
+                    }
+                }
             }
 
-            val schList = booked.futsal?.getValue(field.id)
-            schList?.forEach {
-                info { "value: $it" }
-            }
-            itemView.tvBooked.text = (schList ?: "no value").toString()
-
-
-            /*when (field.category) {
-                "futsal" -> {
-                    booked.futsal?.let { hashMap ->
-                        hashMap[field.id]?.let { list ->
-                            schList.apply { clear(); addAll(list) }
-                        }
-                    }
-                }
-                "badminton" -> {
-                    booked.badminton?.let { hashMap ->
-                        hashMap[field.id]?.let { list ->
-                            schList.apply { clear(); addAll(list) }
-                        }
-                    }
-                }
-                "basketball" -> {
-                    booked.basketball?.let { hashMap ->
-                        hashMap[field.id]?.let { list ->
-                            schList.apply { clear(); addAll(list) }
-                        }
-                    }
-                }
-                "soccer" -> {
-                    booked.soccer?.let { hashMap ->
-                        hashMap[field.id]?.let { list ->
-                            schList.apply { clear(); addAll(list) }
-                        }
-                    }
-                }
-            }*/
-
+            itemView.tvBooked.text = availableHour.joinToString()
         }
 
         private fun bindImage(imageUrl: List<String>) {
